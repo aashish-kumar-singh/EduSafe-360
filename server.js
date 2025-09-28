@@ -81,6 +81,12 @@ app.get('/staffandsupport.html', (req, res) => {
 app.get('/disaster-tracker.html',(req,res)=>{
     res.sendFile(path.join(__dirname, 'views', 'disaster-tracker.html'));
 });
+app.get('/hospital.html',(req,res)=>{
+    res.sendFile(path.join(__dirname, 'views', 'hospital.html'));
+});
+app.get('/emergencycontact.html',(req,res)=>{
+    res.sendFile(path.join(__dirname, 'views', 'emergencycontact.html'));
+});
 
 // --- Start Server ---
 app.listen(PORT, () => {
