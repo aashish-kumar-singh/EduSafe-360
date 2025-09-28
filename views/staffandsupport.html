@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Safety System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+    }
+    .section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 45%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    #map {
+      width: 100%;
+      height: 400px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 15px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Disaster Safety Contact Page</h1>
+
+  <div class="container">
+    <!-- Student Section -->
+    <div class="section">
+      <h2>For Students</h2>
+      <p>If you are stuck in a disaster, share your live location.</p>
+      <button onclick="shareLocation()">📍 Share My Location</button>
+    </div>
+
+    <!-- Staff Section -->
+    <div class="section">
+      <h2>For Staff</h2>
+      <p>Find predefined safety places and help students.</p>
+      <button onclick="showSafetyPlaces()">🏫 Show Safety Places</button>
+    </div>
+  </div>
+
+  <!-- Google Map -->
+  <div id="map"></div>
+
+  <script>
+    let map;
+    let studentMarker;
+    const safetyPlaces = [
+      { lat: 26.9124, lng: 75.7873, name: "Safety Zone A" },
+      { lat: 26.9150, lng: 75.7840, name: "Safety Zone B" },
+      { lat: 26.9180, lng: 75.7890, name: "Safety Zone C" }
+    ];
+
+    function initMaps() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 26.9124, lng: 75.7873 }, // Jaipur as default
+        zoom: 14,
+      });
+    }
+
+    function shareLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((pos) => {
+          const userLoc = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+
+          if (studentMarker) studentMarker.setMap(null); // remove old marker
+
+          studentMarker = new google.maps.Marker({
+            position: userLoc,
+            map: map,
+            title: "Student Location",
+            icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+          });
+
+          map.setCenter(userLoc);
+        }, () => {
+          alert("Location access denied!");
+        });
+      } else {
+        alert("Geolocation not supported!");
+      }
+    }
+
+    function showSafetyPlaces() {
+      safetyPlaces.forEach(place => {
+        new google.maps.Marker({
+          position: { lat: place.lat, lng: place.lng },
+          map: map,
+          title: place.name,
+          icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+        });
+      });
+    }
+  </script>
+
+  <!-- ✅ Correct Google Maps Script -->
+  <script async 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGZPsXRrv3wE75zsxDPTKbyxsgW-N7B50&libraries=places&callback=initMaps">
+  </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSafe 360 - Disaster Preparedness & Response</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/project.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00d4ff">
+</head>
+<body>
+
+<nav>
+  <div class="container nav-container">
+    <a href="#" class="logo">EduSafe 360</a>
+    <ul class="nav-links"> 
+      <li><a href="#home">Home</a></li>
+      <li><a href="#ar-vr">AR/VR</a></li>
+      <li><a href="#local-support">Local Support</a></li>
+      <li><a href="#safe-places">Safe Places</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- Login Button on Right -->
+       <!-- DYNAMIC USER ACTIONS -->
+<div class="user-actions">
+    <% if (locals.user) { %>
+        <span class="welcome-message">Welcome, <%= user.name %></span>
+        <a href="/logout" class="logout-button">Logout</a>
+    <% } else { %>
+        <a href="/login" class="login-button">Login / Sign Up</a>
+    <% } %>
+</div>
+<!-- END DYNAMIC USER ACTIONS -->
+  </div>
+</nav>
+
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>Prepare. Respond. Survive.</h1>
+        <p>Empowering schools and colleges with AI-driven disaster education for a safer tomorrow.</p>
+        <a href="#ar-vr" class="cta-button">Start Training Now</a>
+    </div>
+</section>
+
+<section id="ar-vr">
+    <div class="container">
+        <h2 class="section-title">AR/VR Simulations</h2>
+        <div class="ar-vr-grid">
+            <a href="earthquake.html">
+                <div class="ar-card">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <h3>Earthquake Drills</h3>
+                    <p>Immerse in realistic quake scenarios to practice duck, cover, and hold.</p>
+                    <div class="demo-image" style="background-image: url('https://images.unsplash.com/photo-1641648542439-6c002138dfdd?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGRpc2FzdGVyfGVufDB8fDB8fHww');"></div>
+                </div>
+            </a>
+            <a href="fire.html">
+                <div class="ar-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>Fire Evacuations</h3>
+                    <p>Navigate virtual flames and smoke for safe escape routes.</p>
+                    <div class="demo-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661490162121-41df314e1ef1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGZpcmV8ZW58MHx8MHx8fDA%3D');"></div>
+                </div>
+            </a>
+            <a href="flood.html">
+                <div class="ar-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Flood Safety</h3>
+                    <p>Learn water rescue and high-ground strategies in AR floods.</p>
+                    <div class="demo-image" style="background-image: url('https://images.unsplash.com/photo-1581059686229-de26e6ae5dc4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZGlzYXN0ZXJ8ZW58MHx8MHx8fDA%3D');"></div>
+                </div>
+            </a> 
+        </div>
+    </div>
+</section>
+
+<section id="games">
+    <div class="container">
+        <h2 class="section-title">Disaster Simulation Games</h2>
+        <div class="games-grid">
+            <div class="game-card">
+                <h3>Stop Disasters!</h3>
+                <p>Plan cities to survive floods, earthquakes, and wildfires.</p>
+                <a href="https://www.stopdisastersgame.org/" target="_blank">
+                    <button>Play Now</button>
+                </a>
+            </div>
+            <div class="game-card">
+                <h3>Disaster Will Strike</h3>
+                <p>Physics-based destruction with earthquakes, floods, and more.</p>
+                <a href="https://www.gameflare.com/online-game/disaster-will-strike/" target="_blank">
+                    <button>Play Now</button>
+                </a>
+            </div>
+            <div class="game-card">
+                <h3>Disaster Simulator</h3>
+                <p>Sandbox-style experiments with earthquakes, fires, and floods.</p>
+                <a href="https://www.construct.net/en/free-online-games/disaster-simulator-48422/play" target="_blank">
+                    <button>Play Now</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="game-container">
+    <div id="loading-spinner" style="display: none;">
+        <p>Loading game...</p>
+        <div class="spinner"></div>
+    </div>
+</div>
+
+<section id="local-support">
+    <div class="container">
+        <h2 class="section-title">Local Support Network</h2>
+        <div class="support-list">
+            <div class="support-item">
+                <div class="support-image" style="background-image: url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                <h4>Nearby Hospitals</h4>
+                <p>Real-time info on the closest medical facilities, emergency contacts, and staff directories.</p>
+            </div>
+            <a href="/staffandsupport.html">
+                <div class="support-item">
+                    <div class="support-image" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <h4>Staff & Support Team</h4>
+                    <p>Access to trained responders, counselors, and on-site coordinators.</p>
+                </div>
+            </a> 
+            <div class="support-item">
+                <div class="support-image" style="background-image: url('https://images.unsplash.com/photo-1727925650600-06f7e6b4a2bc?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJhY2tncm91bmQlMjBpbWFnZSUyMHVybCUyMGZvciUyMGRpc2FzdGVyJTIwbWFuYWdlJTIwbWFuYWdlbWVudCUyMHByb2plY3QlMjBmb3IlMjBzY29vbCUyMGFuZCUyMGNvbGxhZ2VzJTIwc3R1ZGVudCUyMHNhZmV0eSUyMGVtZXJnZW5jeSUyMGNvbnRlY3R8ZW58MHx8MHx8fDA%3D');"></div>
+                <h4>Emergency Contacts</h4>
+                <p>Direct lines to local authorities, ambulances, and helplines.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="safe-places">
+    <div class="container">
+        <h2 class="section-title">Safe Places & Disaster Monitoring</h2>
+        <div class="safe-grid">
+            <a href="disaster-tracker.html">
+            <div class="safe-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Safe Zones in Campus</h3>
+                <p>Custom GIS-mapped evacuation routes and assembly points tailored to your institution.</p>
+                <div class="monitor-image" style="background-image: url('https://images.unsplash.com/photo-1589561253898-7685d6df5e56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+            </div>
+            </a>
+            <a href="realtimemonitoring.html">
+                <div class="safe-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Real-Time Monitoring</h3>
+                    <p>IoT sensors track fire, smoke, and seismic activity with instant alerts.</p>
+                    <div class="monitor-image" style="background-image: url('https://images.unsplash.com/photo-1581094288338-231b058b38b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');"></div>
+                </div>
+            </a> 
+            <a href="alertprediction.html">
+                <div class="safe-card">
+                    <i class="fas fa-crystal-ball"></i>
+                    <h3>Disaster Prediction</h3>
+                    <p>AI forecasts risks using weather data and historical patterns for proactive prep.</p>
+                    <div class="monitor-image" style="background-image: url('https://images.unsplash.com/photo-1569163139394-de44aa9a21bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                </div>
+            </a> 
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">Building a Resilient Future, One Campus at a Time</h2>
+        <p class="about-mission">
+            Our mission is to democratize disaster preparedness, transforming anxiety into action through accessible, cutting-edge technology. We empower every student and educator to become a confident first responder in the face of an emergency.
+        </p>
+
+        <div class="about-pillars-grid">
+            <!-- Pillar 1: Innovation -->
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3>Innovation at the Core</h3>
+                <p>We leverage AI, AR, and VR to create hyper-realistic training simulations that build life-saving muscle memory, going far beyond traditional drills.</p>
+            </div>
+
+            <!-- Pillar 2: Accessibility -->
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Accessibility for All</h3>
+                <p>Safety is a universal right. Our platform is multi-lingual, intuitive, and designed to be accessible to everyone, regardless of technical skill.</p>
+            </div>
+
+            <!-- Pillar 3: Community -->
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Powered by Community</h3>
+                <p>We connect campuses with local authorities, creating a unified safety network that ensures a coordinated and effective response when it matters most.</p>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>100+</h3>
+                <p>Simulated Scenarios</p>
+            </div>
+            <div class="stat-item">
+                <h3>99.9%</h3>
+                <p>Alert Delivery Rate</p>
+            </div>
+            <div class="stat-item">
+                <h3>10+</h3>
+                <p>Languages Supported</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    
+    <div class="container">
+        <h2 class="section-title">Get in Touch</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 EduSafe 360. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Form submission (placeholder)
+    document.querySelector('.contact-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Message sent! (Demo)');
+    });
+</script>
+
+<script> window.chtlConfig = { chatbotId: "4229847338" } </script>
+<script async data-id="4229847338" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,es,fr,hi,zh-CN,ar,pt,ru,de,jp',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/controls/PointerLockControls.js"></script>
+
+</body>
+</html>
+
