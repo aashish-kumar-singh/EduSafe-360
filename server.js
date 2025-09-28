@@ -5,6 +5,9 @@ const dotenv = require('dotenv');
 const MongoStore = require('connect-mongo'); // <-- Import connect-mongo
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
+const { sendEmail } = require('./services/emailService');
+
+
 
 // Load Environment Variables
 dotenv.config();
@@ -82,5 +85,32 @@ app.get('/disaster-tracker.html',(req,res)=>{
 // --- Start Server ---
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+
+app.post('/subscribe', async (req, res) => {
+    try {
+        const { email } = req.body;
+
+        if (!email) {
+            return res.status(400).send("Email is required");
+        }
+
+        // Send a confirmation email
+        await sendEmail(
+            email,
+            "Subscription Confirmed ✅",
+            "Thanks for subscribing to disaster alerts. Stay safe!"
+        );
+
+        // Optionally save the subscriber in MongoDB here
+        // const subscriber = new Subscriber({ email });
+        // await subscriber.save();
+
+        res.send("Subscription successful! Check your inbox.");
+    } catch (err) {
+        console.error("Subscription error:", err);
+        res.status(500).send("Something went wrong. Please try again later.");
+    }
 });
 
