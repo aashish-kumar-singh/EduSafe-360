@@ -571,3 +571,383 @@ footer {
 }
 
 
+/* --- Enhanced & Themed AI Safety Analyzer Section --- */
+
+#aiSafetyAnalyzer {
+    /* Uses the default section padding from your main styles */
+    background: linear-gradient(135deg, var(--dark-tertiary) 0%, var(--dark-quaternary) 100%);
+}
+
+#aiSafetyAnalyzer .asa-container {
+    width: 100%;
+}
+
+#aiSafetyAnalyzer .asa-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+#aiSafetyAnalyzer .asa-header h3 {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 800;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+#aiSafetyAnalyzer .asa-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#aiSafetyAnalyzer .asa-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+@media (max-width: 992px) {
+    #aiSafetyAnalyzer .asa-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+#aiSafetyAnalyzer .asa-column {
+    display: flex;
+    flex-direction: column;
+}
+
+#aiSafetyAnalyzer .asa-upload-area {
+    background: var(--glass-bg);
+    border: 2px dashed var(--glass-border);
+    border-radius: var(--border-radius-sm);
+    padding: 2.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+    color: var(--text-secondary);
+}
+
+#aiSafetyAnalyzer .asa-upload-area:hover,
+#aiSafetyAnalyzer .asa-upload-area.dragover {
+    border-color: var(--primary-color);
+    background: rgba(0, 212, 255, 0.1);
+}
+
+#aiSafetyAnalyzer .asa-upload-icon {
+    width: 50px;
+    height: 50px;
+    fill: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+#aiSafetyAnalyzer .asa-upload-area p {
+    margin: 0.5rem 0;
+}
+
+#aiSafetyAnalyzer .asa-small-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+#aiSafetyAnalyzer .asa-preview-container {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+#aiSafetyAnalyzer #imagePreview {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: var(--border-radius-sm);
+    display: none;
+    box-shadow: var(--shadow-secondary);
+    border: 1px solid var(--glass-border);
+}
+
+#aiSafetyAnalyzer .asa-cta-button {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    border: none;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.2);
+}
+
+#aiSafetyAnalyzer .asa-cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 32px rgba(0, 212, 255, 0.4);
+}
+
+#aiSafetyAnalyzer .asa-cta-button:disabled {
+    background: #555;
+    color: var(--text-muted);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+#aiSafetyAnalyzer #asa-output-column {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+#aiSafetyAnalyzer .asa-loading-spinner {
+    border: 4px solid rgba(0, 212, 255, 0.2);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: asa-spin 1s linear infinite;
+}
+
+@keyframes asa-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#aiSafetyAnalyzer .asa-results-card {
+    background: var(--dark-secondary);
+    border-radius: var(--border-radius-sm);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+}
+
+#aiSafetyAnalyzer .asa-results-card h3 {
+    color: var(--primary-color);
+    margin: 0 0 0.5rem 0;
+}
+
+#aiSafetyAnalyzer .safety-instructions .instruction-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-top-left-radius: var(--border-radius-sm);
+    border-top-right-radius: var(--border-radius-sm);
+    background-color: rgba(255, 107, 53, 0.2); /* Accent Color for warning */
+    color: var(--accent-color);
+}
+
+#aiSafetyAnalyzer .safety-instructions .instruction-header.low {
+    background-color: rgba(0, 212, 255, 0.15); /* Primary Color for safe */
+    color: var(--primary-color);
+}
+
+#aiSafetyAnalyzer .instruction-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+#aiSafetyAnalyzer .instruction-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+
+#aiSafetyAnalyzer .instruction-content {
+    padding: 1.5rem;
+    background: var(--dark-tertiary);
+    border-bottom-left-radius: var(--border-radius-sm);
+    border-bottom-right-radius: var(--border-radius-sm);
+}
+
+#aiSafetyAnalyzer .instruction-content ol {
+    padding-left: 20px;
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+#aiSafetyAnalyzer .instruction-content li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+#aiSafetyAnalyzer .asa-error-message {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    background-color: rgba(255, 107, 53, 0.2);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+#aiSafetyAnalyzer .asa-api-status {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+/* --- Building Safety Check Section --- */
+#safetyCheckSection {
+    /* Uses your existing section padding and background */
+    background: linear-gradient(135deg, var(--dark-secondary) 0%, var(--dark-tertiary) 100%);
+}
+
+#safetyCheckSection .sc-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#safetyCheckSection h2 {
+    /* Matches your .section-title style */
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: var(--text-light);
+    line-height: 1.2;
+}
+
+#safetyCheckSection h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 24px auto 0;
+    border-radius: 2px;
+}
+
+#safetyCheckSection p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#safetyCheckSection .sc-search-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+#safetyCheckSection #buildingNameInput {
+    width: 60%;
+    padding: 14px 20px;
+    font-size: 1rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    color: var(--text-light);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+#safetyCheckSection #buildingNameInput::placeholder {
+    color: var(--text-muted);
+}
+
+#safetyCheckSection #buildingNameInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+#safetyCheckSection #verifyBtn {
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 16px rgba(0, 212, 255, 0.2);
+}
+
+#safetyCheckSection #verifyBtn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
+}
+
+#safetyCheckSection #verifyBtn:disabled {
+    background: #555;
+    color: var(--text-muted);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* --- Results Styling --- */
+#safetyCheckSection .sc-result-card {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 1.5rem;
+    border-radius: var(--border-radius-sm);
+    margin-top: 2rem;
+    border-left-width: 6px;
+    border-left-style: solid;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--dark-tertiary);
+}
+
+#safetyCheckSection .sc-icon {
+    font-size: 2.5rem;
+    margin-right: 1.5rem;
+}
+
+#safetyCheckSection .sc-result-card h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.25rem;
+    color: var(--text-light);
+}
+
+#safetyCheckSection .sc-result-card p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+/* Status: Approved */
+#safetyCheckSection .sc-result-card.approved {
+    border-color: var(--primary-color);
+}
+
+/* Status: Not Approved */
+#safetyCheckSection .sc-result-card.not-approved {
+    border-color: var(--accent-color);
+}
+
+/* Status: Not Found */
+#safetyCheckSection .sc-result-card.not-found {
+    border-color: #888;
+}
+
+/* Loader */
+#safetyCheckSection .sc-loader {
+    border: 4px solid var(--dark-tertiary);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: sc-spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes sc-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
